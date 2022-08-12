@@ -1,0 +1,103 @@
+.popular-view {
+  margin-top: 100px;
+}
+
+.popular-images {
+  height: 100px;
+  width: 90px;
+  border-radius: 5px;
+}
+@media screen and (min-width: 768px) {
+  .popular-images {
+    height: 170px;
+    width: 255px;
+  }
+}
+
+.popular-movies-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (min-width: 768px) {
+  .popular-movies-container {
+    margin-top: 15px;
+  }
+}
+
+.popular-list-items-container {
+  list-style-type: none;
+  padding: 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 95%;
+}
+
+@media screen and (min-width: 768px) {
+  .popular-list-items-container {
+    width: 80%;
+  }
+}
+
+.popular-movie {
+  margin: 5px;
+}
+
+@media screen and (min-width: 768px) {
+  .popular-images {
+    margin: 10px;
+  }
+}
+
+.popular-loader-container {
+  width: 100%;
+  min-height: 50vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.popular-failure-view {
+  min-height: 60vh;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.popular-failure-image {
+  height: 172px;
+  width: 233px;
+}
+
+@media screen and (min-width: 768px) {
+  .popular-failure-image {
+    height: 276px;
+    width: 375px;
+  }
+}
+
+.popular-failure-text {
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+@media screen and (min-width: 768px) {
+  .popular-failure-text {
+    font-size: 24px;
+  }
+}
+
+.popular-image-button {
+  border: none;
+  background-color: transparent;
+}

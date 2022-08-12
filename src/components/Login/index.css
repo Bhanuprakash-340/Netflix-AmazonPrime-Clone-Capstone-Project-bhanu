@@ -1,0 +1,195 @@
+* {
+  margin: 0px;
+}
+
+.app-login-container {
+  background: #131313;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 768px) {
+  .app-login-container {
+    background-image: url('https://res.cloudinary.com/bhanu-prakash/image/upload/v1658906183/netfilx_1_jx3t08.png');
+  }
+}
+
+.logo-container {
+  height: 10vh;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  align-self: flex-start;
+  position: fixed;
+}
+@media screen and (min-width: 768px) {
+  .logo-container {
+    height: 12vh;
+  }
+}
+
+.login-website-logo {
+  height: 27px;
+  width: 100px;
+  margin-left: 32px;
+  margin-top: 32px;
+}
+
+@media screen and (min-width: 768px) {
+  .login-website-logo {
+    height: 45px;
+    width: 165px;
+    margin-left: 165px;
+  }
+}
+
+.login-heading {
+  color: #ffffff;
+  font-size: 32px;
+  font-family: 'Roboto';
+  align-self: flex-start;
+  margin-bottom: 30px;
+}
+
+@media screen and (min-width: 768px) {
+  .login-heading {
+    text-align: center;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  width: 100%;
+  margin-top: 10vh;
+}
+
+@media screen and (min-width: 768px) {
+  .form {
+    margin-top: 12vh;
+  }
+}
+
+.form-div {
+  width: 85%;
+  padding-bottom: 90px;
+}
+
+@media screen and (min-width: 768px) {
+  .form-div {
+    max-width: 500px;
+    padding: 60px;
+    background: #0c0b10;
+    opacity: 0.8;
+    border-radius: 8px;
+  }
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.label {
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1%;
+  font-family: 'Roboto';
+  font-style: normal;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+
+.input-text-box {
+  height: 40px;
+  width: 100%;
+  padding-left: 16px;
+  background-color: #333333;
+  color: #e2e8f0;
+  border: none;
+  font-size: 14px;
+  font-family: 'roboto';
+  font-weight: 400;
+  outline: none;
+}
+
+.input-password-box {
+  height: 40px;
+  width: 100%;
+  padding-left: 16px;
+  background-color: #333333;
+  color: #e2e8f0;
+  border: none;
+  font-size: 14px;
+  font-family: 'roboto';
+  font-weight: 400;
+  outline: none;
+}
+
+.error-message {
+  color: #dc2626;
+  font-size: 14px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  margin-top: 12px;
+  margin-bottom: 32px;
+}
+
+.login-button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.sign-in-button {
+  height: 40px;
+  width: 100%;
+  background-color: #e50914;
+  color: #ffffff;
+  border-radius: 2px;
+  border: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.check-box-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.check-box {
+  height: 13px;
+  width: 13px;
+  margin-right: 4px;
+  cursor: pointer;
+  outline: none;
+}
+
+.check-box-label {
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  color: #ffffff;
+}
+
+.login-loader-container {
+  margin-left: 10px;
+}

@@ -1,0 +1,235 @@
+.app-home-container {
+  min-height: 100vh;
+  background-color: #131313;
+  padding-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.top {
+  /* background-image: url('https://res.cloudinary.com/bhanu-prakash/image/upload/v1658925735/wp2581913-man-of-steel-wallpaper_1_jd6ouj.png'); */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background-size: cover;
+}
+
+.home-page-content {
+  padding-left: 32px;
+  padding-bottom: 20px;
+  padding-top: 10vh;
+  margin-top: 135px;
+  /* background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0),
+    rgba(24, 24, 24, 0.55),
+    rgba(19, 19, 19, 1),
+    rgba(0, 0, 0, 0.2)
+  ); */
+  border-radius: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .home-page-content {
+    margin-bottom: 150px;
+    margin-left: 164px;
+    max-width: 700px;
+    padding: 50px;
+    /* background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0),
+      rgba(24, 24, 24, 0.55),
+      rgba(19, 19, 19, 1),
+      rgba(0, 0, 0, 0),
+      rgba(19, 19, 19, 1)
+    ); */
+  }
+}
+
+.home-page-heading {
+  font-size: 36px;
+  font-weight: 600;
+  font-family: 'Roboto';
+  color: #ffffff;
+  padding-bottom: 10px;
+}
+@media screen and (min-width: 768px) {
+  .home-page-heading {
+    margin-bottom: 24px;
+  }
+}
+
+.home-page-description {
+  font-family: 'roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 21px;
+  color: #ffffff;
+  padding-bottom: 24px;
+  /* background-color: rgba(0, 0, 0, 0.2); */
+}
+
+@media screen and (min-width: 768px) {
+  .home-page-description {
+    margin-bottom: 32px;
+  }
+}
+
+.home-bg-linear {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(24, 24, 24, 0.546875) 68.26%,
+    #131313 92.82%,
+    #131313 98.68%,
+    #131313 108.61%
+  );
+}
+
+.play-button {
+  width: 76px;
+  height: 32px;
+  background: #ffffff;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+}
+
+.bottom-card {
+  color: #ffffff;
+  /* border: 2px solid green; */
+}
+
+.trend-text {
+  font-size: 20px;
+  font-weight: 600;
+  margin-left: 32px;
+  align-self: flex-start;
+  margin-top: 31px;
+}
+@media screen and (min-width: 768px) {
+  .trend-text {
+    margin-left: 250px;
+    /* margin-top: 20px; */
+  }
+}
+
+.slider-container {
+  padding: 25px;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  padding: 10px 10px 0px 10px;
+}
+
+.slick-container {
+  width: 85%;
+  max-width: 1100px;
+  margin-top: 10px;
+}
+
+@media screen and (min-width: 992px) {
+  .slick-container {
+    width: 100%;
+  }
+}
+
+.loader-container {
+  background-color: #0d0d0d;
+  width: 90%;
+  height: 150px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+.bg-loader-container {
+  background-color: #0d0d0d;
+  width: 85%;
+  height: 300px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 80px;
+  margin-left: 30px;
+  border-radius: 5px;
+}
+
+.error-container-bg {
+  color: #ffffff;
+  background-color: #0d0d0d;
+  width: 85%;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 80px;
+  margin-left: 30px;
+  border-radius: 5px;
+}
+
+.error-container {
+  background-color: #0d0d0d;
+  width: 90%;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+.triangle-bg {
+  color: red;
+  margin-bottom: 10px;
+  font-size: 25px;
+}
+
+.try-again-button-bg {
+  font-size: 16px;
+  font-weight: 600;
+  padding: 10px 15px 10px 15px;
+  border-radius: 4px;
+  border: none;
+}
+
+.error-text-bg {
+  font-family: 'Roboto';
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.triangle {
+  color: red;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.try-again-button {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 10px 15px 10px 15px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+.error-text {
+  font-family: 'Roboto';
+  margin-bottom: 10px;
+  font-size: 12px;
+}

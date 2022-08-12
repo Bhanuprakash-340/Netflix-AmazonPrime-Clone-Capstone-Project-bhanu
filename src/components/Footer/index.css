@@ -1,0 +1,56 @@
+.footer-section {
+  color: #ffffff;
+  padding: 20px 0px 20px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.google {
+  font-size: 25px;
+}
+
+.twitter {
+  color: #00acee;
+  font-size: 25px;
+}
+
+.instagram {
+  background: radial-gradient(
+    circle at 33% 100%,
+    #fed373 4%,
+    #f15245 30%,
+    #d92e7f 62%,
+    #9b36b7 85%,
+    #515ecf
+  );
+  border-radius: 30%;
+  font-size: 25px;
+}
+
+.youtube {
+  color: red;
+  font-size: 25px;
+}
+
+.icons-container {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media screen and (min-width: 768px) {
+  .icons-container {
+    width: 15%;
+    margin-bottom: 10px;
+  }
+}
+
+.contact {
+  font-family: 'Roboto';
+  font-weight: 600;
+  padding-top: 10px;
+}

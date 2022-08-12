@@ -1,0 +1,88 @@
+.account-app-container {
+  background-color: #181818;
+  min-height: 100vh;
+}
+
+.account-container {
+  background-color: #ffffff;
+  margin-top: 105px;
+  min-height: 60vh;
+  margin-bottom: 60px;
+}
+@media screen and (min-width: 768px) {
+  .account-container {
+    margin-top: 15vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.account-content-view {
+  padding: 30px;
+}
+
+@media screen and (min-width: 768px) {
+  .account-content-view {
+    width: 80%;
+  }
+}
+
+.account-heading {
+  font-size: 24px;
+  font-family: 'Roboto';
+  font-weight: 600;
+  color: #131313;
+}
+
+.hr-line {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.password-username {
+  display: flex;
+  flex-direction: row;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.premium {
+  display: flex;
+  flex-direction: row;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.side-heading {
+  color: #94a3b8;
+  font-weight: 600;
+  font-size: 18px;
+  font-family: 'Roboto';
+  margin-right: 20px;
+}
+
+.logout-button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 48px;
+}
+
+.logout-button {
+  height: 40px;
+  width: 90px;
+  font-size: 16px;
+  background-color: #e50914;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.ultra {
+  border: 2px solid #131313;
+  border-radius: 4px;
+  padding: 2px 4px 2px 4px;
+}
