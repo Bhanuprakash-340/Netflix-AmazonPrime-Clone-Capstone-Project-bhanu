@@ -2,6 +2,7 @@ import {Component} from 'react'
 import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
 // import {AiOutlineSearch} from 'react-icons/ai'
+import {HiOutlineSearch} from 'react-icons/hi'
 import {CgPlayList} from 'react-icons/cg'
 import {MdCancel} from 'react-icons/md'
 import {Link} from 'react-router-dom'
@@ -27,6 +28,7 @@ class SearchPage extends Component {
   }
 
   getSearchDetailsList = async () => {
+    this.setState({searchListStatus: apiStatusConstants.inProgress})
     const jwtToken = Cookies.get('jwt_token')
     const {searchInput} = this.state
     const searchUrl = `https://apis.ccbp.in/movies-app/movies-search?search=${searchInput}`
@@ -52,6 +54,13 @@ class SearchPage extends Component {
     } else {
       this.setState({searchListStatus: apiStatusConstants.failure})
     }
+  }
+
+  onClickSearchView = () => this.getSearchDetailsList
+
+  onClickSearchButton = () => {
+    const {searchInput} = this.state
+    this.onChangeSearchInput(searchInput)
   }
 
   onChangeSearchInput = event => {
@@ -116,7 +125,7 @@ class SearchPage extends Component {
       <button
         type="button"
         className="try-again-button"
-        onClick={this.onClickPopularView}
+        onClick={this.onClickSearchView}
       >
         Try Again
       </button>
@@ -173,12 +182,23 @@ class SearchPage extends Component {
                 </div>
 
                 <div className="header-buttons-container">
-                  <input
-                    type="search"
-                    className="search-bar"
-                    placeholder="Search"
-                    onChange={this.onChangeSearchInput}
-                  />
+                  <div className="search-bar-button-container">
+                    <input
+                      type="search"
+                      className="search-bar"
+                      placeholder="Search"
+                      onChange={this.onChangeSearchInput}
+                    />
+                    <button
+                      type="button"
+                      testid="searchButton"
+                      className="search-button"
+                      onClick={this.onClickSearchButton}
+                    >
+                      <HiOutlineSearch />
+                    </button>
+                  </div>
+
                   <button
                     type="button"
                     className="hamburger-icon"

@@ -1,5 +1,6 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
+import Loader from 'react-loader-spinner'
 import Header from '../Header'
 import {MovieItemBg} from './styledComponents'
 import Footer from '../Footer'
@@ -26,6 +27,7 @@ class MovieItem extends Component {
   }
 
   getMovieItem = async () => {
+    this.setState({movieItemApiStatus: apiStatusConstants.inProgress})
     const jwtToken = Cookies.get('jwt_token')
     const {match} = this.props
     const {params} = match
@@ -85,6 +87,8 @@ class MovieItem extends Component {
     }
   }
 
+  onClickMovieItemView = () => this.getMovieItem
+
   renderMovieItemSuccessView = () => {
     const {
       movieItemBannerDetails,
@@ -92,7 +96,7 @@ class MovieItem extends Component {
       languages,
       similarMoviesList,
     } = this.state
-    console.log(movieItemBannerDetails)
+    // console.log(movieItemBannerDetails)
     const {
       adult,
       backdropPath,
@@ -191,7 +195,7 @@ class MovieItem extends Component {
           <h1 className="similar-movies-heading">More like this </h1>
           <ul className="similar-movies-lists-container">
             {similarMoviesList.map(each => (
-              <li>
+              <li key={each.similarMoviesId}>
                 <img
                   src={each.posterPath}
                   alt={each.title}
@@ -205,6 +209,32 @@ class MovieItem extends Component {
       </>
     )
   }
+
+  renderMovieItemFailureView = () => (
+    <div className="movie-item-failure-view">
+      <img
+        src="https://res.cloudinary.com/bhanu-prakash/image/upload/v1660204770/Background-Complete_ni3wis.png"
+        alt="Failure"
+        className="popular-failure-image"
+      />
+      <p className="popular-failure-text">
+        Something went wrong, Please try again.
+      </p>
+      <button
+        type="button"
+        className="try-again-button"
+        onClick={this.onClickMovieItemView}
+      >
+        Try Again
+      </button>
+    </div>
+  )
+
+  renderMovieItemLoadingView = () => (
+    <div className="movie-item-loader-container" testid="loader">
+      <Loader type="TailSpin" color="#D81F26" height={32} width={32} />
+    </div>
+  )
 
   renderMovieItemDetailsView = () => {
     const {movieItemApiStatus} = this.state

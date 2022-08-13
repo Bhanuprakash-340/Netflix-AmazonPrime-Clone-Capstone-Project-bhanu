@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
 import Header from '../Header'
+import Pagination from '../Pagination'
 
 import './index.css'
 import Footer from '../Footer'
@@ -15,7 +16,12 @@ const apiStatusConstants = {
 }
 
 class Popular extends Component {
-  state = {popularList: [], popularApiStatus: apiStatusConstants.initial}
+  state = {
+    popularList: [],
+    popularApiStatus: apiStatusConstants.initial,
+    perPage: [],
+    activePage: 1,
+  }
 
   componentDidMount() {
     this.renderPopularDetails()
@@ -43,6 +49,7 @@ class Popular extends Component {
       }))
       this.setState({
         popularList: updatedPopularData,
+        perPage: updatedPopularData.slice(0, 12),
         popularApiStatus: apiStatusConstants.success,
       })
     } else {
@@ -53,12 +60,20 @@ class Popular extends Component {
   onClickPopularView = () => this.renderPopularDetails
 
   renderPopularSuccessView = () => {
-    const {popularList} = this.state
+    const {popularList, perPage, activePage} = this.state
+
+    const pageHandler = pageNumber => {
+      this.setState({
+        perPage: popularList.slice(pageNumber * 12 - 12, pageNumber * 12),
+        activePage: pageNumber,
+      })
+    }
+
     return (
       <>
         <div className="popular-movies-container">
           <ul className="popular-list-items-container">
-            {popularList.map(each => (
+            {perPage.map(each => (
               <li key={each.id} className="popular-movie">
                 <Link to={`/movies/${each.id}`}>
                   <img
@@ -71,6 +86,12 @@ class Popular extends Component {
             ))}
           </ul>
         </div>
+
+        <Pagination
+          popularList={popularList}
+          pageHandler={pageHandler}
+          activePage={activePage}
+        />
         <Footer />
       </>
     )

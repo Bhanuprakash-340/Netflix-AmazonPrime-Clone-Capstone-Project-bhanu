@@ -1,6 +1,6 @@
 import {Component} from 'react'
 import './index.css'
-import {AiOutlineSearch} from 'react-icons/ai'
+import {HiOutlineSearch} from 'react-icons/hi'
 import {CgPlayList} from 'react-icons/cg'
 import {MdCancel} from 'react-icons/md'
 import {Link} from 'react-router-dom'
@@ -13,6 +13,7 @@ class Header extends Component {
 
   render() {
     const {showHamburger} = this.state
+
     return (
       <>
         <nav className="header-extra">
@@ -42,7 +43,7 @@ class Header extends Component {
               <div className="header-buttons-container">
                 <button type="button" className="search-icon">
                   <Link to="/search">
-                    <AiOutlineSearch className="icon" />
+                    <HiOutlineSearch className="icon" />
                   </Link>
                 </button>
                 <button
@@ -72,7 +73,6 @@ class Header extends Component {
                   <Link to="/popular-movies" className="home-header-text">
                     <p>Popular</p>
                   </Link>
-
                   <Link to="/account" className="home-header-text">
                     <p>Account</p>
                   </Link>

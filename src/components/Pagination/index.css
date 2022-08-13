@@ -1,0 +1,32 @@
+.pagination-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.page-no {
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  margin: 4px;
+  padding: 5px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 600;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.active-1 {
+  border-color: aqua;
+}
+
+.active-2 {
+  border-color: red;
+}
+
+.active-3 {
+  border-color: green;
+}
