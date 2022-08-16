@@ -5,7 +5,7 @@ import Loader from 'react-loader-spinner'
 import {HiOutlineSearch} from 'react-icons/hi'
 import {CgPlayList} from 'react-icons/cg'
 import {MdCancel} from 'react-icons/md'
-import {Link} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
 import './index.css'
 
 const apiStatusConstants = {
@@ -56,30 +56,26 @@ class SearchPage extends Component {
     }
   }
 
-  onClickSearchView = () => this.getSearchDetailsList
+  onClickSearchView = () => this.getSearchDetailsList()
+
+  onClickButton = () =>
+    this.setState(prevState => ({showHamburger: !prevState.showHamburger}))
 
   onClickSearchButton = () => {
     const {searchInput} = this.state
     this.onChangeSearchInput(searchInput)
   }
 
-  onChangeSearchInput = event => {
-    this.setState({searchInput: event.target.value})
-  }
-
-  onClickButton = () =>
-    this.setState(prevState => ({showHamburger: !prevState.showHamburger}))
-
   renderSearchSuccessView = () => {
     const {searchList, searchInput} = this.state
 
-    const searchResult = searchList.filter(each =>
-      each.title.toLowerCase().includes(searchInput.toLowerCase()),
-    )
+    //     const searchResult = searchList.filter(each =>
+    //       each.title.toLowerCase().includes(searchInput.toLowerCase()),
+    //     )
     // console.log(searchResult.length)
     return (
       <>
-        {searchResult.length === 0 ? (
+        {searchList.length === 0 ? (
           <div className="no-search-results-container">
             <img
               src="https://res.cloudinary.com/bhanu-prakash/image/upload/v1660319728/Group_1_vktg8w.png"
@@ -87,14 +83,14 @@ class SearchPage extends Component {
               className="no-search-result"
             />
             <p className="no-result-text">
-              Your search for <span className="search-text">{searchInput}</span>{' '}
+              Your search for {searchInput}
               did not find any matches.
             </p>
           </div>
         ) : (
           <div className="popular-movies-container">
             <ul className="popular-list-items-container">
-              {searchResult.map(each => (
+              {searchList.map(each => (
                 <li key={each.id} className="popular-movie">
                   <Link to={`/movies/${each.id}`}>
                     <img
@@ -116,7 +112,7 @@ class SearchPage extends Component {
     <div className="popular-failure-view">
       <img
         src="https://res.cloudinary.com/bhanu-prakash/image/upload/v1660204770/Background-Complete_ni3wis.png"
-        alt="Failure"
+        alt="failure view"
         className="popular-failure-image"
       />
       <p className="popular-failure-text">
@@ -152,6 +148,21 @@ class SearchPage extends Component {
     }
   }
 
+  onKeyPressDown = event => {
+    if (event.key.toLowerCase() === 'enter') {
+      this.onClickSearchButton()
+    }
+  }
+
+  onChangeSearchInput = event => {
+    this.setState({searchInput: event.target.value})
+  }
+
+  onClickSearchButton = () => {
+    const {searchInput} = this.state
+    this.getSearchDetailsList(searchInput)
+  }
+
   render() {
     const {showHamburger} = this.state
     return (
@@ -161,24 +172,28 @@ class SearchPage extends Component {
             <div className="homo-logo-container">
               <div className="logo-search-container">
                 <div className="extra">
-                  <button type="button" className="header-website-logo-button">
-                    <Link to="/">
-                      <img
-                        src="https://res.cloudinary.com/bhanu-prakash/image/upload/v1659939641/Group_7399_eg0ly7.png"
-                        alt="website logo"
-                        className="header-website-logo"
-                      />
-                    </Link>
-                  </button>
+                  {/* <button type="button" className="header-website-logo-button"> */}
+                  <Link to="/">
+                    <img
+                      src="https://res.cloudinary.com/bhanu-prakash/image/upload/v1659939641/Group_7399_eg0ly7.png"
+                      alt="website logo"
+                      className="header-website-logo"
+                    />
+                  </Link>
+                  {/* </button> */}
 
-                  <div className="header-links">
+                  <ul className="header-links">
                     <Link to="/" className="home-header-text">
-                      <p className="header-text">Home</p>
+                      <li>
+                        <p className="header-text">Home</p>
+                      </li>
                     </Link>
                     <Link to="/popular-movies" className="home-header-text">
-                      <p className="header-text">Popular</p>
+                      <li>
+                        <p className="header-text">Popular</p>
+                      </li>
                     </Link>
-                  </div>
+                  </ul>
                 </div>
 
                 <div className="header-buttons-container">
@@ -188,17 +203,19 @@ class SearchPage extends Component {
                       className="search-bar"
                       placeholder="Search"
                       onChange={this.onChangeSearchInput}
+                      onKeyDown={this.onKeyPressDown}
                     />
-                    <button
-                      type="button"
-                      testid="searchButton"
-                      className="search-button"
-                      onClick={this.onClickSearchButton}
-                    >
-                      <HiOutlineSearch />
-                    </button>
+                    <div testid="searchButton">
+                      <button
+                        type="button"
+                        testid="searchButton"
+                        className="search-button"
+                        onClick={this.onClickSearchButton}
+                      >
+                        <HiOutlineSearch />
+                      </button>
+                    </div>
                   </div>
-
                   <button
                     type="button"
                     className="hamburger-icon"
@@ -206,31 +223,36 @@ class SearchPage extends Component {
                   >
                     <CgPlayList className="ham-icon" />
                   </button>
-                  <button type="button" className="profile-button">
-                    <Link to="/account">
-                      <img
-                        src="https://res.cloudinary.com/bhanu-prakash/image/upload/v1659938688/Avatar_pwt7qg.png"
-                        alt="profile"
-                        className="user-profile"
-                      />
-                    </Link>
-                  </button>
+
+                  <Link to="/account">
+                    <img
+                      src="https://res.cloudinary.com/bhanu-prakash/image/upload/v1659938688/Avatar_pwt7qg.png"
+                      alt="profile"
+                      className="user-profile"
+                    />
+                  </Link>
                 </div>
               </div>
               {showHamburger && (
                 <div className="hamburger-content-display">
-                  <div className="small-header-link-components">
+                  <ul className="small-header-link-components">
                     <Link to="/" className="home-header-text">
-                      <p>Home</p>
+                      <li>
+                        <p>Home</p>
+                      </li>
                     </Link>
                     <Link to="/popular-movies" className="home-header-text">
-                      <p>Popular</p>
+                      <li>
+                        <p>Popular</p>
+                      </li>
                     </Link>
 
                     <Link to="/account" className="home-header-text">
-                      <p>Account</p>
+                      <li>
+                        <p>Account</p>
+                      </li>
                     </Link>
-                  </div>
+                  </ul>
                   <div className="cancel-icon">
                     <button
                       type="button"
@@ -251,4 +273,4 @@ class SearchPage extends Component {
   }
 }
 
-export default SearchPage
+export default withRouter(SearchPage)

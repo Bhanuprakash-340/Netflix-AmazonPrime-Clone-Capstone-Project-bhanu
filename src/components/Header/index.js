@@ -3,7 +3,7 @@ import './index.css'
 import {HiOutlineSearch} from 'react-icons/hi'
 import {CgPlayList} from 'react-icons/cg'
 import {MdCancel} from 'react-icons/md'
-import {Link} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
 
 class Header extends Component {
   state = {showHamburger: false}
@@ -20,32 +20,35 @@ class Header extends Component {
           <div className="homo-logo-container">
             <div className="logo-search-container">
               <div className="extra">
-                <button type="button" className="header-website-logo-button">
-                  <Link to="/">
-                    <img
-                      src="https://res.cloudinary.com/bhanu-prakash/image/upload/v1659939641/Group_7399_eg0ly7.png"
-                      alt="website logo"
-                      className="header-website-logo"
-                    />
-                  </Link>
-                </button>
+                {/* <button type="button" className="header-website-logo-button"> */}
+                <Link to="/">
+                  <img
+                    src="https://res.cloudinary.com/bhanu-prakash/image/upload/v1659939641/Group_7399_eg0ly7.png"
+                    alt="website logo"
+                    className="header-website-logo"
+                  />
+                </Link>
+                {/* </button> */}
 
-                <div className="header-links">
+                <ul className="header-links">
                   <Link to="/" className="home-header-text">
-                    <p className="header-text">Home</p>
+                    <li>
+                      <p className="header-text">Home</p>
+                    </li>
                   </Link>
-                  <Link to="/popular-movies" className="home-header-text">
-                    <p className="header-text">Popular</p>
+                  <Link to="/popular" className="home-header-text">
+                    <li>
+                      <p className="header-text">Popular</p>
+                    </li>
                   </Link>
-                </div>
+                </ul>
               </div>
 
               <div className="header-buttons-container">
-                <button type="button" className="search-icon">
-                  <Link to="/search">
-                    <HiOutlineSearch className="icon" />
-                  </Link>
-                </button>
+                <Link to="/search" className="search-icon-need">
+                  <HiOutlineSearch className="icon" />
+                </Link>
+
                 <button
                   type="button"
                   className="hamburger-icon"
@@ -53,30 +56,37 @@ class Header extends Component {
                 >
                   <CgPlayList className="ham-icon" />
                 </button>
-                <button type="button" className="profile-button">
-                  <Link to="/account">
-                    <img
-                      src="https://res.cloudinary.com/bhanu-prakash/image/upload/v1659938688/Avatar_pwt7qg.png"
-                      alt="profile"
-                      className="user-profile"
-                    />
-                  </Link>
-                </button>
+                {/* <button type="button" className="profile-button"> */}
+
+                <Link to="/account">
+                  <img
+                    src="https://res.cloudinary.com/bhanu-prakash/image/upload/v1659938688/Avatar_pwt7qg.png"
+                    alt="profile"
+                    className="user-profile"
+                  />
+                </Link>
+                {/* </button> */}
               </div>
             </div>
             {showHamburger && (
               <div className="hamburger-content-display">
-                <div className="small-header-link-components">
+                <ul className="small-header-link-components">
                   <Link to="/" className="home-header-text">
-                    <p>Home</p>
+                    <li>
+                      <p>Home</p>
+                    </li>
                   </Link>
-                  <Link to="/popular-movies" className="home-header-text">
-                    <p>Popular</p>
+                  <Link to="/popular" className="home-header-text">
+                    <li>
+                      <p>Popular</p>
+                    </li>
                   </Link>
                   <Link to="/account" className="home-header-text">
-                    <p>Account</p>
+                    <li>
+                      <p>Account</p>
+                    </li>
                   </Link>
-                </div>
+                </ul>
                 <div className="cancel-icon">
                   <button
                     type="button"
@@ -95,4 +105,4 @@ class Header extends Component {
   }
 }
 
-export default Header
+export default withRouter(Header)

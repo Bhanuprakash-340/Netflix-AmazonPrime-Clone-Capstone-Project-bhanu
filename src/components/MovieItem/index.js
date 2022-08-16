@@ -1,8 +1,9 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
+import {withRouter} from 'react-router-dom'
 import Loader from 'react-loader-spinner'
 import Header from '../Header'
-import {MovieItemBg} from './styledComponents'
+// import {MovieItemBg} from './styledComponents'
 import Footer from '../Footer'
 import './index.css'
 
@@ -87,7 +88,7 @@ class MovieItem extends Component {
     }
   }
 
-  onClickMovieItemView = () => this.getMovieItem
+  onClickMovieItemView = () => this.getMovieItem()
 
   renderMovieItemSuccessView = () => {
     const {
@@ -102,7 +103,6 @@ class MovieItem extends Component {
       backdropPath,
       budget,
       overview,
-      posterPath,
       releaseDate,
       runtime,
       title,
@@ -121,7 +121,13 @@ class MovieItem extends Component {
 
     return (
       <>
-        <MovieItemBg movieItemBgSm={posterPath} movieItemBgLg={backdropPath}>
+        {/* <MovieItemBg movieItemBgSm={posterPath} movieItemBgLg={backdropPath}> */}
+        <div
+          className="movie-item-bg-container-last"
+          style={{
+            backgroundImage: `url(${backdropPath})`,
+          }}
+        >
           <div className="linear-extra">
             <div className="movie-item-content-container">
               <h1 className="title">{title}</h1>
@@ -130,7 +136,9 @@ class MovieItem extends Component {
                   {hours}h {minutes}m
                 </p>
                 <p className="dates-duration-details-censor">{censorCert}</p>
-                <p className="dates-duration-details">{date[0]}</p>
+                <p className="dates-duration-details" key={releaseDate}>
+                  {date[0]}
+                </p>
               </div>
               <p className="over-view">{overview}</p>
               <div>
@@ -140,7 +148,7 @@ class MovieItem extends Component {
               </div>
             </div>
           </div>
-        </MovieItemBg>
+        </div>
         <div className="movie-item-detailed-view-container">
           <div className="need">
             <div className="movie-details-container">
@@ -185,7 +193,9 @@ class MovieItem extends Component {
 
               <div className="movie-details-container">
                 <h1 className="movie-detail-headings">Release Date</h1>
-                <p className="texts">{releaseDate}</p>
+                <p className="texts" key={releaseDate}>
+                  {releaseDate}
+                </p>
               </div>
             </div>
           </div>
@@ -214,7 +224,7 @@ class MovieItem extends Component {
     <div className="movie-item-failure-view">
       <img
         src="https://res.cloudinary.com/bhanu-prakash/image/upload/v1660204770/Background-Complete_ni3wis.png"
-        alt="Failure"
+        alt="failure view"
         className="popular-failure-image"
       />
       <p className="popular-failure-text">
@@ -260,4 +270,4 @@ class MovieItem extends Component {
   }
 }
 
-export default MovieItem
+export default withRouter(MovieItem)

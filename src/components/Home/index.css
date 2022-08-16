@@ -6,12 +6,24 @@
   flex-direction: column;
 }
 
-.top {
-  /* background-image: url('https://res.cloudinary.com/bhanu-prakash/image/upload/v1658925735/wp2581913-man-of-steel-wallpaper_1_jd6ouj.png'); */
+.home-bg-container {
+  background-image: url('https://res.cloudinary.com/bhanu-prakash/image/upload/v1658925735/wp2581913-man-of-steel-wallpaper_1_jd6ouj.png');
+  /* display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background-size: cover; */
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   background-size: cover;
+  background-position: center;
+  height: 501px;
+}
+@media screen and (min-width: 768px) {
+  .home-bg-container {
+    height: 100vh;
+    background-image: url('https://res.cloudinary.com/bhanu-prakash/image/upload/v1658925735/wp2581913-man-of-steel-wallpaper_1_jd6ouj.png');
+  }
 }
 
 .home-page-content {
@@ -109,6 +121,7 @@
   margin-left: 32px;
   align-self: flex-start;
   margin-top: 31px;
+  color: #ffffff;
 }
 @media screen and (min-width: 768px) {
   .trend-text {
@@ -166,6 +179,12 @@
   margin-left: 30px;
   border-radius: 5px;
 }
+@media screen and (min-width: 768px) {
+  .bg-loader-container {
+    margin-left: 120px;
+    margin-top: 100px;
+  }
+}
 
 .error-container-bg {
   color: #ffffff;
@@ -205,6 +224,7 @@
   padding: 10px 15px 10px 15px;
   border-radius: 4px;
   border: none;
+  cursor: pointer;
 }
 
 .error-text-bg {

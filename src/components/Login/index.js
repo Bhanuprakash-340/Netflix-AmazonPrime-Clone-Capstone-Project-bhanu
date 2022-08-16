@@ -1,5 +1,5 @@
 import {Component} from 'react'
-import Loader from 'react-loader-spinner'
+// import Loader from 'react-loader-spinner'
 import {Redirect} from 'react-router-dom'
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
 import Cookies from 'js-cookie'
@@ -11,24 +11,28 @@ class Login extends Component {
     username: '',
     password: '',
     errorMesg: '',
-    showPassword: false,
-    spinner: false,
+    showErrorMesg: false,
+    // showPassword: false,
+    // spinner: false,
   }
 
   onSubmitSuccess = token => {
     const {history} = this.props
+    const {username, password} = this.state
     Cookies.set('jwt_token', token, {expires: 30})
     history.replace('/')
+    localStorage.setItem('username', username)
+    localStorage.setItem('password', password)
   }
 
   onSubmitFailure = message => {
-    this.setState({errorMesg: message})
+    this.setState({errorMesg: message, showErrorMesg: true})
   }
 
   submitForm = async event => {
     event.preventDefault()
     const {username, password} = this.state
-    this.setState({spinner: true})
+    // this.setState({spinner: true})
     const userDetails = {username, password}
     const url = 'https://apis.ccbp.in/login'
     const options = {
@@ -39,10 +43,10 @@ class Login extends Component {
     // console.log(response)
     const data = await response.json()
     if (response.ok === true) {
-      this.setState({spinner: false})
+      //   this.setState({spinner: false})
       this.onSubmitSuccess(data.jwt_token)
     } else {
-      this.setState({spinner: false})
+      //   this.setState({spinner: false})
       this.onSubmitFailure(data.error_msg)
     }
   }
@@ -55,13 +59,13 @@ class Login extends Component {
     this.setState({password: event.target.value})
   }
 
-  onChangeCheckbox = () => {
-    this.setState(prevState => ({showPassword: !prevState.showPassword}))
-  }
+  //   onChangeCheckbox = () => {
+  //     this.setState(prevState => ({showPassword: !prevState.showPassword}))
+  //   }
 
   render() {
-    const {username, password, errorMesg, showPassword, spinner} = this.state
-    const passwordShow = showPassword ? 'text' : 'password'
+    const {username, password, errorMesg, showErrorMesg} = this.state
+    // const passwordShow = showPassword ? 'text' : 'password'
     const jwtToken = Cookies.get('jwt_token')
     if (jwtToken !== undefined) {
       return <Redirect to="/" />
@@ -97,7 +101,7 @@ class Login extends Component {
                 PASSWORD
               </label>
               <input
-                type={passwordShow}
+                type="password"
                 id="password"
                 className="input-password-box"
                 placeholder="Password"
@@ -105,6 +109,7 @@ class Login extends Component {
                 onChange={this.onChangePassword}
               />
             </div>
+            {showErrorMesg && <p className="error-message">*{errorMesg}</p>}
             <div className="check-box-container">
               <input
                 type="checkbox"
@@ -116,12 +121,13 @@ class Login extends Component {
                 Show Password
               </label>
             </div>
-            <p className="error-message">{errorMesg}</p>
+            {/* {showErrorMesg && <p className="error-message">*{errorMesg}</p>} */}
+            {/* <p className="error-message">*{errorMesg}</p> */}
             <div className="login-button-container">
               <button type="submit" className="sign-in-button">
                 {/* <span>Sign in</span> */}
-                Sign in
-                {spinner && (
+                Login
+                {/* {spinner && (
                   <div className="login-loader-container" data-testid="loader">
                     <Loader
                       type="Oval"
@@ -136,7 +142,7 @@ class Login extends Component {
                       strokeWidthSecondary={2}
                     />
                   </div>
-                )}
+                )} */}
               </button>
             </div>
           </div>

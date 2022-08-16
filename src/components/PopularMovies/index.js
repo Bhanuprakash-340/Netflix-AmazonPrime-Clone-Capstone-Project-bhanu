@@ -1,5 +1,5 @@
 import {Component} from 'react'
-import {Link} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
 import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
 import Header from '../Header'
@@ -20,7 +20,7 @@ class Popular extends Component {
     popularList: [],
     popularApiStatus: apiStatusConstants.initial,
     perPage: [],
-    activePage: 1,
+    // activePage: 1,
   }
 
   componentDidMount() {
@@ -48,8 +48,10 @@ class Popular extends Component {
         title: each.title,
       }))
       this.setState({
-        popularList: updatedPopularData,
-        perPage: updatedPopularData.slice(0, 12),
+        // popularList: updatedPopularData,
+        popularList: updatedPopularData.slice(0, 12),
+        // perPage: updatedPopularData.slice(0, 12),
+        perPage: updatedPopularData,
         popularApiStatus: apiStatusConstants.success,
       })
     } else {
@@ -57,14 +59,14 @@ class Popular extends Component {
     }
   }
 
-  onClickPopularView = () => this.renderPopularDetails
+  onClickPopularView = () => this.renderPopularDetails()
 
   renderPopularSuccessView = () => {
     const {popularList, perPage, activePage} = this.state
 
     const pageHandler = pageNumber => {
       this.setState({
-        perPage: popularList.slice(pageNumber * 12 - 12, pageNumber * 12),
+        popularList: perPage.slice(pageNumber * 12 - 12, pageNumber * 12),
         activePage: pageNumber,
       })
     }
@@ -73,7 +75,7 @@ class Popular extends Component {
       <>
         <div className="popular-movies-container">
           <ul className="popular-list-items-container">
-            {perPage.map(each => (
+            {popularList.map(each => (
               <li key={each.id} className="popular-movie">
                 <Link to={`/movies/${each.id}`}>
                   <img
@@ -91,8 +93,9 @@ class Popular extends Component {
           popularList={popularList}
           pageHandler={pageHandler}
           activePage={activePage}
+          perPage={perPage}
         />
-        <Footer />
+        {/* <Footer /> */}
       </>
     )
   }
@@ -101,7 +104,7 @@ class Popular extends Component {
     <div className="popular-failure-view">
       <img
         src="https://res.cloudinary.com/bhanu-prakash/image/upload/v1660204770/Background-Complete_ni3wis.png"
-        alt="Failure"
+        alt="failure view"
         className="popular-failure-image"
       />
       <p className="popular-failure-text">
@@ -142,9 +145,10 @@ class Popular extends Component {
       <div className="app-home-container">
         <Header />
         <div className="popular-view">{this.renderPopularDetailsView()}</div>
+        <Footer />
       </div>
     )
   }
 }
 
-export default Popular
+export default withRouter(Popular)

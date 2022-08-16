@@ -6,12 +6,20 @@ const Footer = () => (
   <>
     <footer className="footer-section">
       <div className="icons-container">
-        <FaGoogle className="google" />
-        <FaTwitter className="twitter" />
-        <FaInstagram className="instagram" />
-        <FaYoutube className="youtube" />
+        <div>
+          <FaGoogle className="google" />
+        </div>
+        <div>
+          <FaTwitter className="twitter" />
+        </div>
+        <div>
+          <FaInstagram className="instagram" />
+        </div>
+        <div>
+          <FaYoutube className="youtube" />
+        </div>
       </div>
-      <p className="contact">Contact Us</p>
+      <p className="contact">Contact us</p>
     </footer>
   </>
 )

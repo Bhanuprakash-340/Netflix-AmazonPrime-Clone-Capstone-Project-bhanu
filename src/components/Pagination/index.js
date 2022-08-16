@@ -1,9 +1,9 @@
 import './index.css'
 
-const Pagination = ({popularList, pageHandler, activePage}) => {
+const Pagination = ({popularList, pageHandler, activePage, perPage}) => {
   const pageNumbers = []
 
-  for (let i = 1; i < Math.ceil(popularList.length / 12) + 1; i += 1) {
+  for (let i = 1; i < Math.ceil(perPage.length / 12) + 1; i += 1) {
     pageNumbers.push(i)
   }
 

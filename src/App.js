@@ -27,11 +27,7 @@ class App extends Component {
         <Route path="/login" component={Login} />
         <ProtectedRoute exact path="/" component={Home} />
         <ProtectedRoute exact path="/account" component={Account} />
-        <ProtectedRoute
-          exact
-          path="/popular-movies"
-          component={PopularMovies}
-        />
+        <ProtectedRoute exact path="/popular" component={PopularMovies} />
         <ProtectedRoute exact path="/search" component={SearchPage} />
         <ProtectedRoute exact path="/movies/:id" component={MovieItem} />
         <Route path="/bad-path" component={NotFound} />

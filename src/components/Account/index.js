@@ -13,43 +13,48 @@ class Account extends Component {
       history.replace('/login')
     }
 
+    const username = localStorage.getItem('username')
+    const password = localStorage.getItem('password')
+    const securePassword = '*'.repeat(password.length)
+
     return (
-      <div className="app-home-container">
-        <Header />
-        <div className="account-container">
-          <div className="account-content-view">
-            <h1 className="account-heading">Account</h1>
-            <hr className="hr-line" />
-            <div className="password-username">
-              <p className="side-heading">Member ship</p>
-              <div>
-                <p>Bhanu@gmail.com</p>
-                <p>password:***********</p>
+      <>
+        <div className="app-home-container">
+          <Header />
+          <div className="account-container">
+            <div className="account-content-view">
+              <h1 className="account-heading">Account</h1>
+              <hr className="hr-line" />
+              <div className="password-username">
+                <p className="side-heading">Member ship</p>
+                <div>
+                  <p>{username}@gmail.com</p>
+                  <p>Password:{securePassword}</p>
+                </div>
               </div>
-            </div>
-            <hr className="hr-line" />
-            <div className="premium">
-              <p className="side-heading">Plan details </p>
-              <div>
-                <p>
-                  Premium <span className="ultra">Ultra HD</span>
-                </p>
+              <hr className="hr-line" />
+              <div className="premium">
+                <p className="side-heading">Plan details </p>
+                <div className="premium-hd">
+                  <p>Premium</p>
+                  <p className="ultra">Ultra HD</p>
+                </div>
               </div>
-            </div>
-            <hr className="hr-line" />
-            <div className="logout-button-container">
-              <button
-                type="button"
-                className="logout-button"
-                onClick={onClickLogout}
-              >
-                Logout
-              </button>
+              <hr className="hr-line" />
+              <div className="logout-button-container">
+                <button
+                  type="button"
+                  className="logout-button"
+                  onClick={onClickLogout}
+                >
+                  Logout
+                </button>
+              </div>
             </div>
           </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
+      </>
     )
   }
 }

@@ -86,3 +86,8 @@
   border-radius: 4px;
   padding: 2px 4px 2px 4px;
 }
+
+.premium-hd {
+  display: flex;
+  flex-direction: row;
+}
