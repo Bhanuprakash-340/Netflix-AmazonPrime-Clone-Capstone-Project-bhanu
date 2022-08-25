@@ -1,9 +1,10 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
 import Slider from 'react-slick'
+import {Link} from 'react-router-dom'
 import Loader from 'react-loader-spinner'
 import Failure from '../Failure'
-import MoviesSlider from '../MoviesSlider'
+// import MoviesSlider from '../MoviesSlider'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import './index.css'
@@ -94,7 +95,16 @@ class Originals extends Component {
         <div className="slick-container">
           <Slider {...settings}>
             {originalList.map(eachMovie => (
-              <MoviesSlider key={eachMovie.id} movieDetails={eachMovie} />
+              /* <MoviesSlider key={eachMovie.id} movieDetails={eachMovie} /> */
+              <div className="slick-item" key={eachMovie.id}>
+                <Link to={`/movies/${eachMovie.id}`}>
+                  <img
+                    src={eachMovie.posterPath}
+                    alt={eachMovie.title}
+                    className="logo-image"
+                  />
+                </Link>
+              </div>
             ))}
           </Slider>
         </div>

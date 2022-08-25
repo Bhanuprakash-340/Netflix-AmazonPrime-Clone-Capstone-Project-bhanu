@@ -15,7 +15,7 @@ const apiStatusConstants = {
   inProgress: 'INPROGRESS',
 }
 
-class SearchPage extends Component {
+class Search extends Component {
   state = {
     showHamburger: false,
     searchInput: '',
@@ -24,7 +24,7 @@ class SearchPage extends Component {
   }
 
   componentDidMount() {
-    this.getSearchDetailsList()
+    // this.getSearchDetailsList()
   }
 
   getSearchDetailsList = async () => {
@@ -48,7 +48,7 @@ class SearchPage extends Component {
         title: each.title,
       }))
       this.setState({
-        searchList: updatedData,
+        searchList: [...updatedData],
         searchListStatus: apiStatusConstants.success,
       })
     } else {
@@ -56,38 +56,15 @@ class SearchPage extends Component {
     }
   }
 
-  onClickSearchView = () => this.getSearchDetailsList()
-
   onClickButton = () =>
     this.setState(prevState => ({showHamburger: !prevState.showHamburger}))
-
-  onClickSearchButton = () => {
-    const {searchInput} = this.state
-    this.onChangeSearchInput(searchInput)
-  }
 
   renderSearchSuccessView = () => {
     const {searchList, searchInput} = this.state
 
-    //     const searchResult = searchList.filter(each =>
-    //       each.title.toLowerCase().includes(searchInput.toLowerCase()),
-    //     )
-    // console.log(searchResult.length)
     return (
       <>
-        {searchList.length === 0 ? (
-          <div className="no-search-results-container">
-            <img
-              src="https://res.cloudinary.com/bhanu-prakash/image/upload/v1660319728/Group_1_vktg8w.png"
-              alt="no movies"
-              className="no-search-result"
-            />
-            <p className="no-result-text">
-              Your search for {searchInput}
-              did not find any matches.
-            </p>
-          </div>
-        ) : (
+        {searchList.length > 0 ? (
           <div className="popular-movies-container">
             <ul className="popular-list-items-container">
               {searchList.map(each => (
@@ -102,6 +79,17 @@ class SearchPage extends Component {
                 </li>
               ))}
             </ul>
+          </div>
+        ) : (
+          <div className="no-search-results-container">
+            <img
+              src="https://res.cloudinary.com/bhanu-prakash/image/upload/v1660319728/Group_1_vktg8w.png"
+              alt="no movies"
+              className="no-search-result"
+            />
+            <p className="no-result-text">
+              Your search for {searchInput} did not find any matches.
+            </p>
           </div>
         )}
       </>
@@ -121,7 +109,7 @@ class SearchPage extends Component {
       <button
         type="button"
         className="try-again-button"
-        onClick={this.onClickSearchView}
+        onClick={this.getSearchDetailsList}
       >
         Try Again
       </button>
@@ -172,7 +160,6 @@ class SearchPage extends Component {
             <div className="homo-logo-container">
               <div className="logo-search-container">
                 <div className="extra">
-                  {/* <button type="button" className="header-website-logo-button"> */}
                   <Link to="/">
                     <img
                       src="https://res.cloudinary.com/bhanu-prakash/image/upload/v1659939641/Group_7399_eg0ly7.png"
@@ -273,4 +260,4 @@ class SearchPage extends Component {
   }
 }
 
-export default withRouter(SearchPage)
+export default withRouter(Search)

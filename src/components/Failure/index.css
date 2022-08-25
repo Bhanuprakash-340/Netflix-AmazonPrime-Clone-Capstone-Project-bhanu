@@ -1,0 +1,38 @@
+.error-container {
+  background-color: #0d0d0d;
+  width: 90%;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+.try-again-button {
+  font-size: 10px;
+  font-weight: 600;
+  width: 69px;
+  height: 24px;
+  /* padding: 10px 15px 10px 15px; */
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+.error-text {
+  font-family: 'Roboto';
+  margin-bottom: 10px;
+  font-size: 12px;
+}
+
+.alert-icon-failure-view {
+  height: 30px;
+}
+
+@media screen and (min-width: 768px) {
+  .alert-icon-failure-view {
+    height: 50px;
+  }
+}

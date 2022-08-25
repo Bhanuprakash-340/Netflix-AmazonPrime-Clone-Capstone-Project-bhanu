@@ -2,7 +2,8 @@ import {Component} from 'react'
 import Cookies from 'js-cookie'
 import Slider from 'react-slick'
 import Loader from 'react-loader-spinner'
-import MoviesSlider from '../MoviesSlider'
+// import MoviesSlider from '../MoviesSlider'
+import {Link} from 'react-router-dom'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import './index.css'
@@ -61,7 +62,7 @@ class Trending extends Component {
       infinite: false,
       speed: 500,
       slidesToShow: 4,
-      slidesToScroll: 4,
+      slidesToScroll: 1,
       responsive: [
         {
           breakpoint: 1024,
@@ -94,7 +95,16 @@ class Trending extends Component {
         <div className="slick-container">
           <Slider {...settings}>
             {trendingList.map(eachMovie => (
-              <MoviesSlider key={eachMovie.id} movieDetails={eachMovie} />
+              /* <MoviesSlider key={eachMovie.id} movieDetails={eachMovie} /> */
+              <div className="slick-item" key={eachMovie.id}>
+                <Link to={`/movies/${eachMovie.id}`}>
+                  <img
+                    src={eachMovie.posterPath}
+                    alt={eachMovie.title}
+                    className="logo-image"
+                  />
+                </Link>
+              </div>
             ))}
           </Slider>
         </div>

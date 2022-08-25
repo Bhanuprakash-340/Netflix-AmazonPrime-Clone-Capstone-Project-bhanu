@@ -59,8 +59,6 @@ class Popular extends Component {
     }
   }
 
-  onClickPopularView = () => this.renderPopularDetails()
-
   renderPopularSuccessView = () => {
     const {popularList, perPage, activePage} = this.state
 
@@ -113,7 +111,7 @@ class Popular extends Component {
       <button
         type="button"
         className="try-again-button"
-        onClick={this.onClickPopularView}
+        onClick={this.renderPopularDetails}
       >
         Try Again
       </button>
@@ -145,7 +143,9 @@ class Popular extends Component {
       <div className="app-home-container">
         <Header />
         <div className="popular-view">{this.renderPopularDetailsView()}</div>
-        <Footer />
+        <div className="footer-container">
+          <Footer />
+        </div>
       </div>
     )
   }

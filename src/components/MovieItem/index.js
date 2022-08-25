@@ -1,9 +1,8 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
-import {withRouter} from 'react-router-dom'
+import {withRouter, Link} from 'react-router-dom'
 import Loader from 'react-loader-spinner'
 import Header from '../Header'
-// import {MovieItemBg} from './styledComponents'
 import Footer from '../Footer'
 import './index.css'
 
@@ -63,7 +62,7 @@ class MovieItem extends Component {
       const genresListItems = updatedData.genres
       const similarMoviesData = updatedData.similar_movies.map(eachMovie => ({
         backDropPath: eachMovie.backdrop_path,
-        similarMoviesId: eachMovie.id,
+        id: eachMovie.id,
         posterPath: eachMovie.poster_path,
         title: eachMovie.title,
       }))
@@ -79,7 +78,7 @@ class MovieItem extends Component {
       this.setState({
         movieItemBannerDetails: bannerData,
         genresList: genresListItems,
-        similarMoviesList: similarMoviesData,
+        similarMoviesList: similarMoviesData.slice(0, 6),
         languages: languagesList,
         movieItemApiStatus: apiStatusConstants.success,
       })
@@ -113,7 +112,20 @@ class MovieItem extends Component {
     const hours = Math.floor(runtime / 60)
     const minutes = runtime - hours * 60
     const censorCert = adult ? 'A' : 'U/A'
-    const date = releaseDate.split('-')
+    // const date = releaseDate.split('-')
+    const date = new Date(releaseDate)
+
+    let dateEnd
+    const day = date.getDay().toString()
+    if (day.endsWith('3')) {
+      dateEnd = 'rd'
+    } else if (day.endsWith('2')) {
+      dateEnd = 'nd'
+    } else if (day.endsWith('1')) {
+      dateEnd = 'st'
+    } else {
+      dateEnd = 'th'
+    }
 
     // console.log(voteCount)
     // console.log(minutes)
@@ -136,9 +148,7 @@ class MovieItem extends Component {
                   {hours}h {minutes}m
                 </p>
                 <p className="dates-duration-details-censor">{censorCert}</p>
-                <p className="dates-duration-details" key={releaseDate}>
-                  {date[0]}
-                </p>
+                <p className="dates-duration-details">{date.getFullYear()}</p>
               </div>
               <p className="over-view">{overview}</p>
               <div>
@@ -194,7 +204,9 @@ class MovieItem extends Component {
               <div className="movie-details-container">
                 <h1 className="movie-detail-headings">Release Date</h1>
                 <p className="texts" key={releaseDate}>
-                  {releaseDate}
+                  <p>{`${day}${dateEnd} ${date.toLocaleString('default', {
+                    month: 'long',
+                  })} ${date.getFullYear()}`}</p>
                 </p>
               </div>
             </div>
@@ -205,17 +217,21 @@ class MovieItem extends Component {
           <h1 className="similar-movies-heading">More like this </h1>
           <ul className="similar-movies-lists-container">
             {similarMoviesList.map(each => (
-              <li key={each.similarMoviesId}>
-                <img
-                  src={each.posterPath}
-                  alt={each.title}
-                  className="similar-images"
-                />
+              <li key={each.id}>
+                <Link to={`/movies/${each.id}`} target="blank">
+                  <img
+                    src={each.posterPath}
+                    alt={each.title}
+                    className="similar-images"
+                  />
+                </Link>
               </li>
             ))}
           </ul>
         </div>
-        <Footer />
+        <div className="footer-container">
+          <Footer />
+        </div>
       </>
     )
   }

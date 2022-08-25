@@ -1,0 +1,39 @@
+.slide-image {
+  height: 75px;
+  width: 100%;
+  border-radius: 5px;
+}
+.logo-image {
+  height: 100px;
+  width: 80px;
+  margin: 5px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 576px) {
+  .logo-image {
+    width: 80%;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .logo-image {
+    width: 240px;
+    height: 200px;
+  }
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: #ffffff;
+  background-color: black;
+}
+
+.slick-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 2px;
+}

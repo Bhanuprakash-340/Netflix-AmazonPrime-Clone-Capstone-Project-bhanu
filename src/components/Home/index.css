@@ -7,14 +7,10 @@
 }
 
 .home-bg-container {
-  background-image: url('https://res.cloudinary.com/bhanu-prakash/image/upload/v1658925735/wp2581913-man-of-steel-wallpaper_1_jd6ouj.png');
-  /* display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  background-size: cover; */
+  /* background-image: url('https://res.cloudinary.com/bhanu-prakash/image/upload/v1658925735/wp2581913-man-of-steel-wallpaper_1_jd6ouj.png'); */
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: space-between;
   background-size: cover;
   background-position: center;
   height: 501px;
@@ -22,7 +18,7 @@
 @media screen and (min-width: 768px) {
   .home-bg-container {
     height: 100vh;
-    background-image: url('https://res.cloudinary.com/bhanu-prakash/image/upload/v1658925735/wp2581913-man-of-steel-wallpaper_1_jd6ouj.png');
+    /* background-image: url('https://res.cloudinary.com/bhanu-prakash/image/upload/v1658925735/wp2581913-man-of-steel-wallpaper_1_jd6ouj.png'); */
   }
 }
 
@@ -30,15 +26,6 @@
   padding-left: 32px;
   padding-bottom: 20px;
   padding-top: 10vh;
-  margin-top: 135px;
-  /* background-image: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0),
-    rgba(24, 24, 24, 0.55),
-    rgba(19, 19, 19, 1),
-    rgba(0, 0, 0, 0.2)
-  ); */
-  border-radius: 10px;
 }
 
 @media screen and (min-width: 768px) {
@@ -46,15 +33,6 @@
     margin-bottom: 150px;
     margin-left: 164px;
     max-width: 700px;
-    padding: 50px;
-    /* background-image: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0),
-      rgba(24, 24, 24, 0.55),
-      rgba(19, 19, 19, 1),
-      rgba(0, 0, 0, 0),
-      rgba(19, 19, 19, 1)
-    ); */
   }
 }
 
@@ -112,7 +90,6 @@
 
 .bottom-card {
   color: #ffffff;
-  /* border: 2px solid green; */
 }
 
 .trend-text {
@@ -126,7 +103,6 @@
 @media screen and (min-width: 768px) {
   .trend-text {
     margin-left: 250px;
-    /* margin-top: 20px; */
   }
 }
 
@@ -189,7 +165,7 @@
 .error-container-bg {
   color: #ffffff;
   background-color: #0d0d0d;
-  width: 85%;
+  width: 90%;
   height: 300px;
   display: flex;
   flex-direction: column;
@@ -200,22 +176,10 @@
   border-radius: 5px;
 }
 
-.error-container {
-  background-color: #0d0d0d;
-  width: 90%;
-  height: 150px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 10px;
-  border-radius: 5px;
-}
-
-.triangle-bg {
-  color: red;
-  margin-bottom: 10px;
-  font-size: 25px;
+@media screen and (min-width: 992px) {
+  .error-container-bg {
+    margin-left: 70px;
+  }
 }
 
 .try-again-button-bg {
@@ -233,23 +197,11 @@
   font-size: 14px;
 }
 
-.triangle {
-  color: red;
-  margin-bottom: 10px;
-  font-size: 20px;
-}
-
-.try-again-button {
-  font-size: 10px;
-  font-weight: 600;
-  padding: 10px 15px 10px 15px;
-  border-radius: 4px;
-  border: none;
-  cursor: pointer;
-}
-
-.error-text {
-  font-family: 'Roboto';
-  margin-bottom: 10px;
-  font-size: 12px;
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  margin-top: 40px;
 }

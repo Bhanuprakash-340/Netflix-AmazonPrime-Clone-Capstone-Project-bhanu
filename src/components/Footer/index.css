@@ -40,6 +40,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  color: #ffffff;
 }
 
 @media screen and (min-width: 768px) {

@@ -2,7 +2,6 @@ import {Component} from 'react'
 import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
 import {Link} from 'react-router-dom'
-// import {GoAlert} from 'react-icons/go'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import './index.css'
@@ -12,7 +11,6 @@ import Footer from '../Footer'
 import Trending from '../Trending'
 import TopRated from '../TopRated'
 import Originals from '../Originals'
-import Failure from '../Failure'
 
 const apiStatusConstants = {
   initial: 'INITIAL',
@@ -63,19 +61,26 @@ class Home extends Component {
 
   renderSuccessView = () => {
     const {originalListTheme} = this.state
-    const randomNum = Math.floor(Math.random() * 10)
-    // console.log(randomNum)
-    const randomDisplayBg = originalListTheme[randomNum]
-    const {overview, title, id, backDropPath} = randomDisplayBg
+    const randomBgImage =
+      originalListTheme[Math.floor(Math.random() * originalListTheme.length)]
+    // console.log(randomBgImage)
+
+    const {overview, title, id, backDropPath} = randomBgImage
+    // console.log(overview)
     // console.log(title)
+    // console.log(id)
+    // console.log(backDropPath)
 
     return (
       <div
         className="home-bg-container"
         style={{
           backgroundImage: `url(${backDropPath})`,
+          backgroundSize: '100% 100%',
+          backgroundRepeat: 'no-repeat',
         }}
       >
+        <Header />
         <div className="home-bg-linear">
           <div className="home-page-content">
             <h1 className="home-page-heading">{title}</h1>
@@ -103,7 +108,24 @@ class Home extends Component {
     this.getMovieDetails()
   }
 
-  renderFailureView = () => <Failure onRetry={this.onRetry} />
+  renderFailureView = () => (
+    <div className="error-container-bg">
+      <img
+        src="https://res.cloudinary.com/bhanu-prakash/image/upload/v1661339065/alert-triangle_1_p5grnb.png"
+        alt="failure view"
+        className="alert-icon-failure-view"
+      />
+      <p className="error-text-bg">Something went wrong. Please try again</p>
+      <button
+        type="button"
+        className="try-again-button-bg"
+        onClick={this.getMovieDetails}
+      >
+        {' '}
+        Try Again
+      </button>
+    </div>
+  )
 
   getOriginalHomeBgTop = () => {
     const {apiStatus} = this.state
@@ -123,28 +145,25 @@ class Home extends Component {
   render() {
     return (
       <>
-        <div className="app-home-container">
-          <Header />
-          <div className="over-ride">
-            {this.getOriginalHomeBgTop()}
-            <div className="problem">
-              <h1 className="trend-text">Trending Now</h1>
-              <div className="main-container">
-                {/* <h1 className="trend-text">Trending Now</h1> */}
-                <Trending />
-              </div>
-              <h1 className="trend-text">Popular</h1>
-              <div className="main-container">
-                {/* <h1 className="trend-text">Popular</h1> */}
-                <TopRated />
-              </div>
-              <h1 className="trend-text">Originals</h1>
-              <div className="main-container">
-                <Originals />
-              </div>
+        <div className="app-home-container" testid="home">
+          {this.getOriginalHomeBgTop()}
+          <div className="problem">
+            <h1 className="trend-text">Trending Now</h1>
+            <div className="main-container">
+              <Trending />
+            </div>
+            <h1 className="trend-text">Top Rated</h1>
+            <div className="main-container">
+              <TopRated />
+            </div>
+            <h1 className="trend-text">Originals</h1>
+            <div className="main-container">
+              <Originals />
             </div>
           </div>
-          <Footer />
+          <div className="footer-container">
+            <Footer />
+          </div>
         </div>
       </>
     )
