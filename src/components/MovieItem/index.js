@@ -218,7 +218,7 @@ class MovieItem extends Component {
           <ul className="similar-movies-lists-container">
             {similarMoviesList.map(each => (
               <li key={each.id}>
-                <Link to={`/movies/${each.id}`} target="blank">
+                <Link to={`/movies/${each.id}`} target="_parent">
                   <img
                     src={each.posterPath}
                     alt={each.title}
