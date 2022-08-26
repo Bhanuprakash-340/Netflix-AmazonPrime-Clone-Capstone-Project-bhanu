@@ -7,7 +7,6 @@
 }
 
 .home-bg-container {
-  /* background-image: url('https://res.cloudinary.com/bhanu-prakash/image/upload/v1658925735/wp2581913-man-of-steel-wallpaper_1_jd6ouj.png'); */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
